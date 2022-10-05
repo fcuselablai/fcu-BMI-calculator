@@ -13,8 +13,8 @@ def home(request):
         form = BmiForm(request.POST)
         if form.is_valid():
             form_cd = form.cleaned_data
-            h = form_cd.get('height')
-            w = form_cd.get('weight')
+            h = float(form_cd.get('height'))
+            w = float(form_cd.get('weight'))
             bmi, bmi_means = bmi_calculator(h, w)
     return render(request, 'index.html', locals())
 

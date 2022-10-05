@@ -30,8 +30,8 @@ class ViewTest(TestCase):
 
     def test_unit_home(self):
         """Tests the home page."""
-        response = self.client.get('/')
-        self.assertContains(response, 'Home Page', 0, 200)
+        response = self.client.post('/', {'height':30,'weight':80})
+        self.assertContains(response, '健康體位', 1, 200, html=True)
 
     def test_unit_admin(self):
         """Tests the contact page."""

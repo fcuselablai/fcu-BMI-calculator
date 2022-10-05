@@ -1,3 +1,5 @@
 /Application/venv
 *.pyc
 .idea
+*testresults
+.coverage

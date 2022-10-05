@@ -50,8 +50,17 @@
                         <div class="col-4 border-right" >
                             <form action="{% url 'home' %}" method="POST">
                                 {% csrf_token %}
-                                {{form.as_p}}
-                                <button type="submit" class="btn btn-primary">送出</button>
+                                {% for field in form %}
+                                    <div class="fieldWrapper">
+                                        {{ field.label_tag }} {{ field }}
+                                        <div class="text-danger">                                        
+                                            {{ field.errors }}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                <div class='mt-2'>
+                                    <button type="submit" class="btn btn-primary">送出</button>
+                                </div>
                             </form>
                         </div>
                         <div class="col-8">
@@ -69,7 +78,7 @@
             </div>
         </div>
         <div class="col-12 text-center mt-1">
-            關心您的身體健康
+            SELab 關心您的身體健康
         </div>
     </div>
 </div>

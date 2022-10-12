@@ -12,20 +12,11 @@ class BmiFunctionalTests(unittest.TestCase):
 	def setUp(self):
 		options = webdriver.ChromeOptions()
 		options.add_argument('--no-sandbox')
-		# self.driver = webdriver.Chrome(os.path.join(os.environ["ChromeWebDriver"], 'chromedriver.exe'), chrome_options=options)
-
-		# local_test
-		options.add_argument("--headless")
-		self.driver = webdriver.Chrome("/mnt/c/cygwin/home/selab/workspace/fcu-BMI-calculator-test/Tests/chromedriver/stable/chromedriver", options=options)
-
+		self.driver = webdriver.Chrome(os.path.join(os.environ["ChromeWebDriver"], 'chromedriver.exe'), chrome_options=options)
 		self.driver.implicitly_wait(300)
 
 	def test_selenium(self):
-		# webAppUrl = pytest.config.getoption('webAppUrl')
-
-		# local_test
-		webAppUrl = 'http://127.0.0.1:8000'
-
+		webAppUrl = pytest.config.getoption('webAppUrl')
 		start_timestamp = time.time()
 		end_timestamp = start_timestamp + 60*10
 		while True:

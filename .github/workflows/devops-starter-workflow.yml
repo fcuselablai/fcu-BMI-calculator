@@ -12,7 +12,7 @@ env:
   LOCATION: "East Asia"
   HOSTINGPLANNAME: "fcu-bmi-calculator-plan"
   APPINSIGHTLOCATION: "East Asia"
-  SKU: "F1"
+  SKU: "B1"
   SONAR_HOST_URL: "http://20.194.33.30"
 
 jobs:

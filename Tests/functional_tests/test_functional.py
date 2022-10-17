@@ -8,14 +8,18 @@ import time
 
 class FunctionalTests(unittest.TestCase):
 
+	@pytest.fixture(autouse=True)
+    def inject_config(self, request):
+        self._config = request.config
+
 	def setUp(self):
 		options = webdriver.ChromeOptions()
 		options.add_argument('--no-sandbox')
-		self.driver = webdriver.Chrome(os.path.join(os.environ["ChromeWebDriver"], 'chromedriver.exe'), chrome_options=options)
+		self.driver = webdriver.Chrome(os.path.join(os.environ["ChromeWebDriver"], 'chromedriver.exe'), options=options)
 		self.driver.implicitly_wait(300)
 
 	def test_selenium(self):
-		webAppUrl = pytest.config.getoption('webAppUrl')
+		webAppUrl = self._config.getoption('webAppUrl')
 		start_timestamp = time.time()
 		end_timestamp = start_timestamp + 60*10
 		while True:
